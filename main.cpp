@@ -1,55 +1,50 @@
-//
-//  main.cpp
-//  資料結構0223
-//
-//  Created by 椰子樹 on 2022/2/23.
-//
-
 #include <iostream>
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-    
-    int quantity_of_cols; //quantity_of_cols跟quantity_of_rows相等，故只用col表達
-    cout << "請輸入矩陣行數（或列數）：";
-    //cin >> quantity_of_cols;
-    quantity_of_cols = 5; //暫時先固定設為5
-    int index_of_cols = quantity_of_cols - 1; //index_of_cols跟index_of_rows相等，故只用col表達
-    
-    int the_matrix[index_of_cols][index_of_cols];
-    int index_of_middle = index_of_cols / 2;
-    int current_row = 0;
-    int current_col = index_of_middle;
-    
-    for (int row = 0; row <= index_of_cols; ++row) {
-        for (int col = 0; col <= index_of_cols; ++col) {
-            the_matrix[row][col] = 0;
+bool isValidNumber(int a){  //驗證是否為
+    if(a % 2 == 1 && 1 <= a && a <= 11)
+        return true;
+    else
+        return false;
+}
+
+
+void magic(int **magicArr, int length){  //傳入「矩陣位置的位置」和「矩陣大小」
+            
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < length; j++){
+                //magic square 演算法
+                magicArr[i][j] = ((i + j + 1 + (length/2)) % length) + ((i + 2*j +1) % length) + 1;
+            }
         }
+            
+        //列印
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < length; j++){
+                cout<< magicArr[i][j]<<'\t';
+            }
+            cout<< endl;
+        }
+}
+
+int main(){
+    
+    cout<< "請輸入一個奇數" << '\n';
+    int length;
+    cin >> length;
+    
+    //製作二維的動態矩陣
+    int **magicArr =  new int *[length];
+    for(int i = 0; i < length; i++){
+        magicArr[i] = new int[length];
     }
     
-    /*
-    for (int number = 1; number <= quantity_of_cols * quantity_of_cols; ++number) {
-        the_matrix[current_row][current_col] = number;
-        if (current_row == 0) {
-            current_row = index_of_cols;
-        }else{
-            current_row = current_row - 1;
-        }
-        if (current_col == 0) {
-            current_col = index_of_cols;
-        }else{
-            current_col = current_col - 1;
-        }
-        number = number + 1;
-    }*/
-    
-    
-    for (int row = 0; row <= index_of_cols; ++row) {
-        for (int col = 0; col <= index_of_cols; ++col) {
-            cout << the_matrix[row][col];
-        }
-        cout << endl;
+    //檢查使用者輸入的數字是否在定義域內，奇數k，k屬於[3,11]
+    if (isValidNumber(length)) {
+        magic(magicArr, length);
+    } else {
+        cout<< "無效字元";
     }
-    
-    return 0;
+
+return 0;
 }
