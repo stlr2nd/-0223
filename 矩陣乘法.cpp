@@ -8,18 +8,27 @@
 #include <iostream>
 using namespace std;
 
-void multiply(int A[][], int B[][]){
-    int A_rows = sizeof A / sizeof A[0];
-    int A_cols = sizeof A[0] / sizeof(int);
-    int B_rows = sizeof B / sizeof B[0];
-    int B_cols = sizeof B[0] / sizeof(int);
+void multiply(int A[3][3], int B[3][3]){
+    
+    cout << sizeof(A) << "；" << sizeof(A[0]) << endl; //8跟12
+    cout << sizeof(A[0]) << "；" << sizeof(A[0][0]) << endl; //12跟4
+    
+    int A_rows = sizeof(A)/sizeof(A[0]);
+    int A_cols = sizeof(A[0])/sizeof(A[0][0]);
+    int B_rows = sizeof(B)/sizeof(B[0]);
+    int B_cols = sizeof(B[0])/sizeof(B[0][0]);
+    
+    cout << "A有" <<A_rows << "列" << endl;
+    cout << "A有" <<A_cols << "行" << endl;
+    cout << "B有" <<B_rows << "列" << endl;
+    cout << "B有" <<B_cols << "行" << endl;
     
     if ( A_cols != B_rows) {
         cout << "錯誤！A的行數需等於B的列數才能進行矩陣乘法" << endl;
         return;
     };
     
-    int C[A_rows][B_cols]; //答案
+    int C[A_rows][B_cols];
     int x[A_cols]; //x0,x1,x2,...,x(A_cols-1)
     
     for (int c = 0; c < B_cols; c++) {
@@ -58,7 +67,7 @@ int main() {
         {8,1,0},
         {3,3,3},
     };
-    multiply(A[3][3], B[3][3]);
+    multiply(A,B);
     return 0;
 }
 
