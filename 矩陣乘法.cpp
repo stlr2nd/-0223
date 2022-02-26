@@ -12,14 +12,14 @@ void multiply(int A[][], int B[][]){
     int A_rows = sizeof A / sizeof A[0];
     int A_cols = sizeof A[0] / sizeof(int);
     int B_rows = sizeof B / sizeof B[0];
-    int B_cols = sizeof B[0] / sizeof(int); // 5 cols
+    int B_cols = sizeof B[0] / sizeof(int);
     
     if ( A_cols != B_rows) {
         cout << "錯誤！A的行數需等於B的列數才能進行矩陣乘法" << endl;
         return;
     };
     
-    int C[A_rows][B_cols];
+    int C[A_rows][B_cols]; //答案
     int x[A_cols]; //x0,x1,x2,...,x(A_cols-1)
     
     for (int c = 0; c < B_cols; c++) {
