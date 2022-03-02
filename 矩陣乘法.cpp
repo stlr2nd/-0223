@@ -8,20 +8,12 @@
 #include <iostream>
 using namespace std;
 
-void multiply(int A[3][3], int B[3][3]){
+void multiply(int A[][3], int B[][3], int size_of_A, int size_of_B){
     
-    cout << sizeof(A) << "；" << sizeof(A[0]) << endl; //8跟12
-    cout << sizeof(A[0]) << "；" << sizeof(A[0][0]) << endl; //12跟4
-    
-    int A_rows = sizeof(A)/sizeof(A[0]);
+    int A_rows = size_of_A/sizeof(A[0]);
     int A_cols = sizeof(A[0])/sizeof(A[0][0]);
-    int B_rows = sizeof(B)/sizeof(B[0]);
+    int B_rows = size_of_B/sizeof(B[0]);
     int B_cols = sizeof(B[0])/sizeof(B[0][0]);
-    
-    cout << "A有" <<A_rows << "列" << endl;
-    cout << "A有" <<A_cols << "行" << endl;
-    cout << "B有" <<B_rows << "列" << endl;
-    cout << "B有" <<B_cols << "行" << endl;
     
     if ( A_cols != B_rows) {
         cout << "錯誤！A的行數需等於B的列數才能進行矩陣乘法" << endl;
@@ -67,7 +59,8 @@ int main() {
         {8,1,0},
         {3,3,3},
     };
-    multiply(A,B);
+    
+    multiply(A, B, sizeof(A), sizeof(B));
     return 0;
 }
 
