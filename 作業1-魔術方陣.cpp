@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-bool isValidNumber(int a){  //驗證是否為
+bool isValidNumber(int a){  //驗證數字
     if(a % 2 == 1 && 1 <= a && a <= 11)
         return true;
     else
@@ -29,7 +29,7 @@ void magic(int **magicArr, int length){  //傳入「矩陣位置的位置」和�
 
 int main(){
     
-    cout<< "請輸入一個奇數" << '\n';
+    cout<< "請輸入一個奇數：";
     int length;
     cin >> length;
     
