@@ -14,7 +14,7 @@ int main() {
     int stack[105];
     string command;
     int number;
-    int index = 0;
+    int index = 0; //index即一般所謂的top
     
     while (cin >> command) {
         if (command == "push") {
